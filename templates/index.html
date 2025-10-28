@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spam Detector</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #0095B6, #E3DAC9);
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    textarea {
+      width: 400px;
+      height: 120px;
+      resize: none;
+      border-radius:6px;
+      padding: 10px;
+      font-size: 15px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 6px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+      background-color: #006A8E;
+      color: white;
+      font-size: 15px;
+    }
+
+    h1 {
+      margin-top: 10px;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <div class="container">
+	<img src="{{ url_for('static', filename='robot-email.png') }}" alt="Robot Image" height="170px" width="130px">
+
+
+    <h1>Spam Detector For Email 📧</h1>
+
+    <form method="POST" action="/predict">
+      <textarea name="Message" placeholder="Enter Your Mail Here" required></textarea><br>
+      <button type="submit">Analyze</button>
+    </form>
+
+    {% if pred %}
+    <div class="result">
+      <strong>Result:</strong> {{ pred }}
+    </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>
